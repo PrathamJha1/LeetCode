@@ -1,42 +1,27 @@
 class Solution {
 public:
     string intToRoman(int num) {
-        map<string,int>mp;
-        vector<string> keys;
-        keys.push_back("M");
-        keys.push_back("CM");
-        keys.push_back("D");
-        keys.push_back("CD");
-        keys.push_back("C");
-        keys.push_back("XC");
-        keys.push_back("L");
-        keys.push_back("XL");
-        keys.push_back("X");
-        keys.push_back("IX");
-        keys.push_back("V");
-        keys.push_back("IV");
-        keys.push_back("I");
+        vector<pair<string,int>> keys;
         string ans="";
-        mp.insert({"M",1000});
-        mp.insert({"CM",900});
-        mp.insert({"D",500});
-        mp.insert({"CD",400});
-        mp.insert({"C",100});
-        mp.insert({"XC",90});
-        mp.insert({"L",50});
-        mp.insert({"XL",40});
-        mp.insert({"X",10});
-        mp.insert({"IX",9});
-        mp.insert({"V",5});
-        mp.insert({"IV",4});
-        mp.insert({"I",1});
+        keys.push_back({"M",1000});
+        keys.push_back({"CM",900});
+        keys.push_back({"D",500});
+        keys.push_back({"CD",400});
+        keys.push_back({"C",100});
+        keys.push_back({"XC",90});
+        keys.push_back({"L",50});
+        keys.push_back({"XL",40});
+        keys.push_back({"X",10});
+        keys.push_back({"IX",9});
+        keys.push_back({"V",5});
+        keys.push_back({"IV",4});
+        keys.push_back({"I",1});
         for(auto it:keys){
-            cout<<num <<" "<<it<<endl;
-            if(num % mp[it] >= 0){
-                int val = num / mp[it];
-                num= num%mp[it];
+            if(num % it.second >= 0){
+                int val = num / it.second;
+                num= num % it.second;
                 while(val){
-                    ans+=it;
+                    ans += it.first;
                     val--;
                 }
             }
