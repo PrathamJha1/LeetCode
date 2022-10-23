@@ -2,18 +2,17 @@ class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
         map<int,int>mp;
-        vector<int> ans;
+        vector<int> ans(2,0);
         for(int i : nums){
             mp[i]++;
         }
         for(int i =1;i<=nums.size();i++){
             if(mp[i] == 2){
-                ans.push_back(i);
+                ans[0]=i;
             }
-        }
-        for(int i =1 ;i<=nums.size();i++){
+        
             if(mp[i] == 0){
-                ans.push_back(i);
+                ans[1]=i;;
             }
         }
         mp.clear();
