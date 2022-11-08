@@ -6,10 +6,12 @@ using namespace std;
 class Solution {
   public:
     int gameOfXor(int n , int A[]) {
-        if(n%2==0)return 0;
         int ans=0;
         for(int i=0;i<n;i+=2){
-            ans^=A[i];
+            int freq = (i+1)*(n-1);
+            if(freq % 2 == 0){
+                ans^=A[i];   
+            }
         }
         return ans;
     }
