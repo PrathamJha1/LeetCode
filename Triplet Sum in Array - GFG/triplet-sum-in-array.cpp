@@ -10,14 +10,15 @@ class Solution{
     //array A[] which sums up to X.
     bool find3Numbers(int A[], int n, int X)
     {
-        for(int i =0 ;i<n;i++){
-            int currsum =X - A[i];
-            unordered_set<int>s;
-            for(int j=i+1;j<n;j++){
-                if(s.find(currsum - A[j])!=s.end()){
+        sort(A,A+n);
+        for(int i = 0; i < n;i++){
+            int first=i,second=i+1,third=n-1;
+            while(second < third){
+                if(A[first] + A[second] + A[third] == X){
                     return true;
                 }
-                s.insert(A[j]);
+                if(A[first] + A[second] + A[third] > X)third--;
+                else second++;
             }
         }
         return false;
